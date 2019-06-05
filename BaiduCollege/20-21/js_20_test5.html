@@ -1,0 +1,49 @@
+
+<!--
+1.实现一个帧动画
+2.基于一个我们提供的图片，实现 IFE2016中Erik笑容的动画
+3.图片地址：http://ife.baidu.com/2016/static/img/erik_ce204002.jpg
+4.注意，依然不要使用 CSS animation，因为我们这里要学习的是使用 JavaScript 来操作 CSS，而不是为了完成这个任务。
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+        <style>
+            #container {
+                height: 480px;
+                width: 480px;
+                overflow: hidden;
+            }
+            #container img {
+                position: relative;
+                top: 0px;
+            };
+        </style>
+    </head> 
+    <body> 
+        <div id="container">
+            <img id="img1" src="image/image1.jpg">
+        </div>
+        <script>
+            var oImg = document.getElementById("img1");
+            var jud = 1;
+
+            function change() {
+                /*a = oImg.style.top是无效的，css属性不能直接赋给变量
+                  需要使用defaultView.getCOmputedStyle方法*/
+                a = document.defaultView.getComputedStyle(oImg).top;
+                oImg.style.top = parseInt(a) - (jud) * 480 + "px";
+            };
+            function reverse() {
+                jud = (-1) * jud;
+            }
+
+            setInterval(change,100);
+            setInterval(reverse,1600);
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,207 @@
+
+<!--
+基于如上HTML，实现需求
+1.按照HTML中按钮的描述以此实现功能
+2.计算结果显示在 id 为 result 的 P 标签中
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+    </head> 
+    <body> 
+        <div>
+            <label>String A:
+                <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+            </label>
+            <textarea id="str-a"></textarea>
+            <label>String B:
+                <input id="radio-b" type="radio" name="str-obj" value="b">
+            </label>
+            <textarea id="str-b"></textarea>        
+            <label>Num A：<input id="num-a" type="number" value="0"></label>
+            <label>Num B：<input id="num-b" type="number" value="1"></label>
+        </div>
+        <div>
+            <button>获取当前选中输入的内容长度</button>
+            <button>当前选中输入中的第3个字符</button>
+            <button>把两个输入框的文字连接在一起输出（concat）</button>
+            <button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+            <button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+            <button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+            <button>当前选中输入框的行数</button>
+            <button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+            <button>把所选输入框中的内容全部转为大写</button>
+            <button>把所选输入框中的内容全部转为小写</button>
+            <button>把所选输入框中内容的半角空格全部去除</button>
+            <button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+        </div>
+        <p id="result"></p>
+        <script>
+            var oDiv = document.getElementsByTagName("div")[1];
+            var cA = document.getElementById("radio-a");
+            var cB = document.getElementById("radio-b");
+            var iSA = document.getElementById("str-a");
+            var iSB = document.getElementById("str-b");
+            var iNA = document.getElementById("num-a");
+            var iNB = document.getElementById("num-b");
+            var btn0 = oDiv.getElementsByTagName("button")[0];
+            var btn1 = oDiv.getElementsByTagName("button")[1];
+            var btn2 = oDiv.getElementsByTagName("button")[2];
+            var btn3 = oDiv.getElementsByTagName("button")[3];
+            var btn4 = oDiv.getElementsByTagName("button")[4];
+            var btn5 = oDiv.getElementsByTagName("button")[5];
+            var btn6 = oDiv.getElementsByTagName("button")[6];
+            var btn7 = oDiv.getElementsByTagName("button")[7];
+            var btn8 = oDiv.getElementsByTagName("button")[8];
+            var btn9 = oDiv.getElementsByTagName("button")[9];
+            var btn10 = oDiv.getElementsByTagName("button")[10];
+            var btn11 = oDiv.getElementsByTagName("button")[11];
+            
+            /*获取当前选中输入的内容长度*/
+            btn0.onclick = function() {
+                if (cA.checked) {
+                    var num = iSA.value.length;
+                    console.log("当前所选文本框内容的长度为：" + num);
+                } else {
+                    var num = iSB.value.length;
+                    console.log("当前所选文本框内容的长度为：" + num);
+                }
+            };
+
+            /*当前选中输入中的第3个字符*/
+            btn1.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    console.log("当前选中输入中的第3个字符为：" + str[2]);
+                } else {
+                    var str = iSB.value;
+                    console.log("当前选中输入中的第3个字符为：" + str[2]);
+                }
+            };
+
+            /*把两个输入框的文字连接在一起输出（concat）*/
+            btn2.onclick = function() {
+                var str1 = iSA.value;
+                var str2 = iSB.value;
+                console.log(str1 + str2);
+            };
+
+            /*输入B中的内容，在输入A的内容中第一次出现的位置（indexOf)*/
+            btn3.onclick = function() {
+                var str1 = iSA.value;
+                var str2 = iSB.value;
+                var loc = str1.indexOf(str2);
+                console.log("B中的内容第一次在A中出现的位置是A的第" + (loc + 1) + "个字符");
+            };
+
+            /*输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）*/
+            btn4.onclick = function() {
+                var str1 = iSA.value;
+                var str2 = iSB.value;
+                var loc = str2.lastIndexOf(str1);
+                console.log("输入A中的内容，在输入B的内容中最后一次出现的位置是B的第" + (loc + 1) + "个字符");
+            };
+
+            /*使用slice获取选中输入框内容的部分内容，参数为num-a及num-b*/
+            btn5.onclick = function() {
+                var num_a = iNA.value;
+                var num_b = iNB.value;
+                if (cA.checked) {
+                    var str = iSA.value.slice(num_a,num_b);
+                    console.log(str);
+                } else {
+                    var str = iSB.value.slice(num_a,num_b);
+                    console.log(str);
+                }
+            };
+
+            /*当前选中输入框的行数*/
+            btn6.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var lines = str.split("\n").length;
+                    console.log(lines);
+                } else {
+                    var str = iSB.value;
+                    var lines = str.split("\n").length;
+                    console.log(lines);
+                }
+            };
+
+            /*使用substr获取选中输入框内容的子字符串，参数为num-a及num-b*/
+            btn7.onclick = function() {
+                var num_a = iNA.value;
+                var num_b = iNB.value;
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var subStr = str.substr(num_a,(num_b - num_a));
+                    console.log(subStr);
+                } else {
+                    var str = iSB.value;
+                    var subStr = str.substr(num_a,(num_b - num_a));
+                    console.log(subStr);
+                }
+            };
+
+            /*把所选输入框中的内容全部转为大写*/
+            btn8.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var newStr = str.toUpperCase();
+                    console.log(newStr);
+                } else {
+                    var str = iSB.value;
+                    var newStr = str.toUpperCase();
+                    console.log(newStr);
+                }
+            };
+            
+            /*把所选输入框中的内容全部转为小写*/
+            btn9.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var newStr = str.toLowerCase();
+                    console.log(newStr);
+                } else {
+                    var str = iSB.value;
+                    var newStr = str.toLowerCase();
+                    console.log(newStr);
+                }
+            };
+
+            /*把所选输入框中内容的半角空格全部去除*/
+            btn10.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var newStr = str.replace(/\s+/g,"");
+                    console.log(newStr);
+                } else {
+                    var str = iSB.value;
+                    var newStr = str.replace(/\s+/g,"");
+                    console.log(newStr);
+                }
+            };
+
+            /*把所选输入框中内容的a全部替换成另外一个输入框中的内容*/
+            btn11.onclick = function() {
+                if (cA.checked) {
+                    var str = iSA.value;
+                    var anoStr = iSB.value;
+                    var newStr = str.replace(/a/g,anoStr);
+                    console.log(newStr);
+                } else {
+                    var str = iSB.value;
+                    var anoStr = iSA.value;
+                    var newStr = str.replace(/a/g,anoStr);
+                    console.log(newStr);
+                }
+            };
+            
+
+        </script>
+    </body> 
+</html>
+

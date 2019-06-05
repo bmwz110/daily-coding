@@ -1,0 +1,34 @@
+<!--将非负十进制整数转化为二进制-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Transfer Decimal to Binary</title>
+    </head>
+    <body>
+        <input id="dec_number" type="number" placeholder="输入一个十进制非负整数">
+        <button id="trans_btn">转化为二进制</button>
+        <p id="result">运算结果</p>
+        <script>
+        function dec2bin(decNumber) {
+            var stan = /^(\+)?\d+$/; 
+            if (stan.test(decNumber) && (decNumber != 0)) {
+                var str = "";
+                while (decNumber/2 != 0) {
+                    str = decNumber % 2 + str;
+                    decNumber = Math.floor(decNumber/2);
+                }
+                return str;
+            } else {
+                return "Input is not non-negative integer！";
+            }
+        }
+
+        document.getElementById("trans_btn").onclick = function() {
+            dec_num = document.getElementById("dec_number").value;
+            var bin = dec2bin(dec_num);   /*函数返回值不能被直接使用，需要创建变量进行接收*/
+            document.getElementById("result").innerHTML = "运算结果：" + bin;
+        }
+        </script>
+    </body>
+</html>

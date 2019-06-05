@@ -1,0 +1,31 @@
+<!--
+  例如，如果第一个参数是 [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }]，第二个参数是 { last: "Capulet" }，那么你必须从数组（第一个参数）返回其中的第三个对象，因为它包含了作为第二个参数传递的属性-值对。
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function where(collection, source) {
+        var arr = Object.keys(source);
+        var output = [];
+        for (var i = 0; i < collection.length; i++) {
+          var num = 0;
+          for (var j = 0; j < arr.length; j++) {
+            if(collection[i].hasOwnProperty(arr[j]) && collection[i][arr[j]] === source[arr[j]]) {
+              num ++;
+            }
+          }
+          if (num === arr.length) {
+            output.push(collection[i]);
+          }
+        }
+        console.log(output);
+      }
+
+      where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+    </script>
+  </body>
+</html>

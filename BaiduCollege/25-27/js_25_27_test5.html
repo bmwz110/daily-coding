@@ -1,0 +1,134 @@
+<!--
+使用上方的HTML结构（可以根据需要自行微调）为基础编写JavaScript代码
+当变更任何一个select选择时，更新 result-wrapper 的内容
+当所选时间早于现在时间时，文案为 现在距离 "所选时间" 已经过去 xxxx
+当所选时间晚于现在时间时，文案为 现在距离 "所选时间" 还有 xxxx
+注意当前时间经过所选时间时候的文案变化
+注意选择不同月份的时候，日期的可选范围不一样，比如1月可以选31天，11月只有30天，注意闰年
+同样，需要注意，通过优雅的函数封装，使得代码更加可读且可维护
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+<body>
+    <!--以下为简便起见，仅设两个量进行实验-->
+    <select id="year-select">
+        <option value="2000">2019</option>
+        <option value="2001">2018</option>
+    </select>
+    
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <select id="hour-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <select id="minute-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <select id="second-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+    
+    <p id="result-wrapper">现在距离<span id="Y">2001</span>年<span id="M">1</span>月<span id="D">1</span>日星期<span id="W">1</span>
+        <span id="H">1</span>时<span id="oM">1</span>分<span id="S">1</span>秒
+        <span id="te">还有</span> <span id="D1">1</span> 天 <span id="H1">1</span> 小时 <span id="oM1">1</span> 分 <span id="S1">1</span> 秒</p>
+
+    <script>
+
+        setInterval(update, 1000);
+        function update() {
+            document.getElementById("Y").innerHTML = sY();
+            document.getElementById("M").innerHTML = sM();
+            document.getElementById("D").innerHTML = sD();
+            document.getElementById("H").innerHTML = sH();
+            document.getElementById("oM").innerHTML = sOM();
+            document.getElementById("S").innerHTML = sS();
+            document.getElementById("W").innerHTML = sW();
+            var setDate = sY() + "-" + sM() + "-" + sD() + " " + sH() + ":" + sOM() + ":" + sS();
+            var setDate = setDate.replace(/\-/g, "/");
+            var setDate = new Date(setDate);
+            var myDate = new Date();
+            var dateDif1 = setDate.getTime();
+            var dateDif2 = myDate.getTime();
+            var minus = dateDif1 - dateDif2;
+            if (dateDif1 < dateDif2) {
+                document.getElementById("te").innerHTML = "已经过去：";
+                } else {
+                document.getElementById("te").innerHTML = "还有：";
+            };
+            var teD = Math.floor(Math.abs(minus)/(1000*60*60*24));
+            var teH = Math.floor((Math.abs(minus) - teD*24*60*60*1000)/(1000*60*60));
+            var teM = Math.floor((Math.abs(minus) - teD*24*60*60*1000 - teH*60*60*1000)/(1000*60));
+            document.getElementById("D1").innerHTML = teD;
+            document.getElementById("H1").innerHTML = teH;
+            document.getElementById("oM1").innerHTML = teM;
+            document.getElementById("S1").innerHTML = Math.floor((Math.abs(minus) - teD*24*60*60*1000 - teH*60*60*1000 - teM*60*1000)/(1000)); 
+        };
+
+        function sY() {
+            var sY = document.getElementById("year-select");
+            var sYIndex = sY.selectedIndex;
+            var sYValue = sY.options[sYIndex].text;
+            return sYValue;
+        };
+
+        function sM() {
+            var sM = document.getElementById("month-select");
+            var sMIndex = sM.selectedIndex;
+            var sMValue = sM.options[sMIndex].text;
+            return sMValue;
+        };
+
+        function sD() {
+            var sD = document.getElementById("day-select");
+            var sDIndex = sD.selectedIndex;
+            var sDValue = sD.options[sDIndex].text;
+            return sDValue;
+        };
+
+        function sH() {
+            var sH = document.getElementById("hour-select");
+            var sHIndex = sH.selectedIndex;
+            var sHValue = sH.options[sHIndex].text;
+            return sHValue;
+        };
+
+        function sOM() {
+            var sOM = document.getElementById("minute-select");
+            var sOMIndex = sOM.selectedIndex;
+            var sOMValue = sOM.options[sOMIndex].text;
+            return sOMValue;
+        };
+
+        function sS() {
+            var sS = document.getElementById("second-select");
+            var sSIndex = sS.selectedIndex;
+            var sSValue = sS.options[sSIndex].text;
+            return sSValue;
+        };
+        
+        function sW() {
+            var da = sY() + "-" + sM() + "-" + sD();
+            var We = new Date(da).getDay();
+            return We;
+        };
+    </script>
+</body>
+</html>
+

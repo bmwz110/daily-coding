@@ -1,0 +1,26 @@
+<!--找出双层嵌套数组中每组的最大数，组合成新数组-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function largestOfFour(arr) {
+        var maxArr = [];
+        for (var i = 0; i < arr.length; i++) {
+          var maxNum = 0;
+          for (var j = 0; j < arr[i].length; j++) {
+            if (arr[i][j] > maxNum) {
+              maxNum = arr[i][j];
+            }
+          }
+          maxArr[i] = maxNum;
+        }
+        return maxArr;
+      }
+
+    largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+    </script>
+  </body>
+</html>

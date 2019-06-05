@@ -1,0 +1,54 @@
+<!--
+有一个用来存储学习成绩的对象，编写一个函数，将其转为如下的二维数组
+var scoreArray = [
+    ["Tony", 95, 79, 68],
+    ……
+];
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+    </head> 
+    <body>
+
+        <script>
+            var scoreObject = {
+                "Tony": {
+                    "Math": 95,
+                    "English": 79,
+                    "Music": 68
+                }, 
+                "Simon": {
+                    "Math": 100,
+                    "English": 95,
+                    "Music": 98
+                }, 
+                "Annie": {
+                    "Math": 54,
+                    "English": 65,
+                    "Music": 88
+                }
+            };
+            function transfer() {
+                var newArray = new Array();
+                var s1 = 0;
+                for (var i in scoreObject) {
+                    var s2 = 0;
+                    newArray[s1] = new Array();
+                    for (var j in scoreObject[i]) {
+                    newArray[s1][0] = i;
+                    s2 += 1;
+                    newArray[s1][s2] =  scoreObject[i][j];
+                    };
+                    s1 += 1;
+                };
+                console.log(newArray);
+            };
+            transfer();
+            
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>learnJavaScript:Conditions</title>
+    </head>
+    <body>
+       <script>
+            let getSleepHours = (day) => {
+                switch (day) {
+                    case "sunday": return 8;
+                    case "monday": return 7;
+                    case "tuesday": return 6;
+                    case "wednesday": return 5;
+                    case "thursday": return 6;
+                    case "friday": return 7;
+                    case "saturaday": return 8;
+                }
+            };
+            let getActualSleepHours = () => {
+                return getSleepHours("sunday")+getSleepHours("monday")+getSleepHours("tuesday")+getSleepHours("wednesday")+getSleepHours("thursday")+getSleepHours("friday")+getSleepHours("saturaday");
+            };
+            let getIdealSleepHours = () => {
+                var idealHours = 8;
+                return idealHours * 7;
+            };
+            let calculateSleepDebt = () => {
+                var actualSleepHours = getActualSleepHours();
+                var idealSleepHours = getIdealSleepHours();
+                if (actualSleepHours === idealSleepHours) {
+                    console.log("you got the perfect amount of sleep!");
+                } else if (actualSleepHours < idealSleepHours) {
+                    console.log(`you need more sleep! you need detract ${idealSleepHours - actualSleepHours} hours.`);
+                } else {
+                    console.log(`you got more sleep than needed. you should add ${actualSleepHours - idealSleepHours } hours.`);
+                }
+            };
+            calculateSleepDebt();
+       </script>
+    </body>
+</html>

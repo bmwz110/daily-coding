@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>learnJavaScript:Conditions</title>
+    </head>
+    <body>
+       <script>
+            let getUserChoice = (userInput) => {
+                userInput = userInput.toLowerCase();
+                if (userInput === "rock") {
+                    return userInput;
+                } else if (userInput === "paper"){
+                    return userInput;
+                } else if (userInput === "scissors") {
+                    return userInput;
+                } else {
+                    console.log("the input is error!");
+                }
+            };
+            let getComputerChoice = () => {
+                var a = Math.floor(Math.random() * 3);
+                switch (a) {
+                    case 0: return "rock";
+                    case 1: return "paper";
+                    case 2: return "scissors";
+                }
+            }
+            let determineWinner = (userChoice,computerChoice) => {
+                if (userChoice === computerChoice) {
+                    console.log("game was a tie!");
+                } else {
+                    if (userChoice === "rock" && computerChoice === "paper") {
+                        console.log("The winner is computer");
+                    } else if (userChoice === "rock" && computerChoice === "scissors") {
+                        console.log("The winner is people!");
+                    } else if (userChoice === "paper" && computerChoice === "scissors") {
+                        console.log("The winner is computer!");
+                    } else if (userChoice === "paper" && computerChoice === "rock") {
+                        console.log("The winner is people!");
+                    } else if (userChoice === "scissors" && computerChoice === "paper") {
+                        console.log("The winner is people!");
+                    } else {
+                        console.log("The winner is computer!");
+                    }
+                }
+            };
+            let playGame = () => {
+                var userChoice = getUserChoice("Rock");
+                var computerChoice = getComputerChoice();
+                console.log(`user's choice is ${userChoice}, and computer's choice is ${computerChoice}.`);
+                determineWinner(userChoice,computerChoice);
+            };
+            playGame();
+       </script>
+    </body>
+</html>

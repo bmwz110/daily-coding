@@ -1,0 +1,208 @@
+<!--注意：img是inline元素，对inline元素使用margin: auto居中无效，需要先设置为block元素-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tea Cozy</title>
+        <style>
+            body {
+                background-color: black;
+                margin: 0;
+                padding: 0;
+            }
+           #header {
+                height: 70px;
+                min-width: 800px;
+                background-color: black;
+                border-bottom: 1px white solid;
+           }
+           #header img {
+                height: 60px;
+                margin-top: 5px;
+                margin-left: 10px;
+           }
+           #header a {
+                color: white;
+                font-size: 160%;
+                float: right;
+                margin: 10px 10px;
+           }
+           #part1 {
+               text-align: center;
+           }
+           #slogan1 {
+               position: relative;
+               top: -500px;
+               margin: 0 auto;
+               background-color: black;
+               height: 120px;
+           }
+           #slogan1 p {
+               color: white;
+               margin: 15px 0;
+           }
+           #slogan1 p:nth-of-type(1) {
+               font-size: 30px;
+               font-weight: bold;
+               padding-top: 10px;
+           }
+           #slogan1 p:nth-of-type(2) {
+               font-size: 20px;
+               font-weight: bold;
+           }
+           #part2 img {
+               width: 350px;
+               height: 240px;
+           }
+           #part2 p {
+               color: white;
+               font-weight: 500;
+           }
+           #part2 div {
+               width: 400px;
+               text-align: center;
+           }
+           #slogan2 {
+               position: relative;
+               top: -100px;
+               text-align: center;
+           }
+           #slogan2 p {
+               color: white;
+               font-weight: 500;
+           }
+           #slogan2 p:nth-of-type(1) {
+               font-size: 40px;
+           } 
+           #slogan2 p:nth-of-type(2) {
+               font-size: 25px;
+           } 
+           #part2 {
+               position: relative;
+               top: -100px;
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: center;
+           }
+           /*注意：img是inline元素，对inline元素使用margin: auto居中无效，需要先设置为block元素*/
+           #part3 img {
+               margin: 0 auto;
+               display: block;
+           }
+           #part3 {
+               text-align: center;
+               height: 500px;
+               overflow: hidden;
+           }
+           #part3 p:nth-of-type(1) {
+               color: white;
+               font-size: 30px;
+               font-weight: 500;
+           }
+           .tag {
+               background-color: black;
+               margin: 30px;
+               width: 240px;
+               height: 260px;
+           }
+           .tag p {
+               color: white;
+           }
+           #otag {
+               display: flex;
+               position: relative;
+               top: -800px;
+               justify-content: center;
+           }
+           #tit {
+                position: relative;
+                top: -800px;
+                font-size: 40px !important;
+           }
+           #part4 {
+               text-align: center;
+           }
+           #part4 p {
+               color: white;
+               font-size: 20px;
+           }
+           #part4 p:nth-of-type(4) {
+               float: left;
+           }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <img src="img-tea-cozy-logo.png"/>
+            <a href="#">Mission</a>
+            <a href="#">Featured Tea</a>
+            <a href="#">Locations</a>
+        </div>
+        <div id="container">
+            <div id="part1">
+                <img src="img-mission-background.jpg"/>
+                <div id="slogan1">
+                    <p>Our Mission</p>
+                    <p>Handpicked, Artisanally Curated, Free Range, Sustainable, Small Batch, Fair Trade, Organic Tea</p>
+                </div>
+            </div>
+            <div id="slogan2">
+                <p>Tea of the Month</p>
+                <p>What's Steeping at The Tea Cozy?</p>
+            </div>
+            <div id="part2">
+                <div id="img1">
+                    <img src="img-berryblitz.jpg"/>
+                    <p>Fall Berry Blitz Tea</p>
+                </div>
+                <div id="img2">
+                    <img src="img-spiced-rum.jpg"/>
+                    <p>Spiced Rum Tea</p>
+                </div>
+                <div id="img3">
+                    <img src="img-donut.jpg"/>
+                    <p>Sensational Dounts</p>
+                </div>
+                <div id="img4">
+                    <img src="img-myrtle-ave.jpg"/>
+                    <p>Myrtle Ave Tea</p>
+                </div>
+                <div id="img5">
+                    <img src="img-bedford-bizarre.jpg"/>
+                    <p>Bedford Bizarre Tea</p>
+                </div>
+            </div>
+            <div id="part3">
+                <img src="img-locations-background.jpg"/>
+                <p id="tit">Location</p>
+                <div id="otag">
+                    <div class="tag">
+                        <p>Downtown</p>
+                        <p>384 West 4th St</p>
+                        <p>Suite 108</p>
+                        <p>Portland, Maine</p>
+                    </div>
+                    <div class="tag">
+                        <p>East Bayside</p>
+                        <p>3433 Phisherman's Avenue</p>
+                        <p>(Northwest Corner)</p>
+                        <p>Portland, Maine</p>
+                    </div>
+                    <div class="tag">
+                        <p>Oakdale</p>
+                        <p>515 Crescent Avenue</p>
+                        <p>Second Floor</p>
+                        <p>Portland, Maine</p>
+                    </div>
+                </div>
+            </div>
+            <div id="part4">
+                <p>The Tea Cozy</p>
+                <p>contact@theteacozy.com</p>
+                <p>917-555-8904</p>
+                <p>copyright The Tea Cozy 2017</p>
+            </div>
+        </div>
+    </body>
+</html>
+

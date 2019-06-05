@@ -1,0 +1,157 @@
+<!--我们现在来做一个最简单的时钟，通过小练习来学习 Date，复习定时，然后再练习一下函数的封装
+具体需求如下：
+
+在页面中显示当前日期及时间，按秒更新
+格式为 YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+注意位数的补齐，比如：
+-- 假设时间为2008年10月10日星期一的12点12分12秒，显示2008年10月10日星期一 12:12:12
+-- 假设时间为2008年1月1日星期一的3点2分2秒，显示2008年01月01日星期一 03:02:02
+编码过程中，我们希望你注意对函数的封装，尽量让一个函数就做一个事情，而不要把所有的功能、代码揉在一起：
+
+封装一个函数，来根据某个日期返回这一天是星期几
+封装一个函数，把月、日、小时等出现个位数的情况前面补充0，补充为两位，比如1变为01
+封装一个函数，把最后的日期时间，按照要求的格式进行包装
+可能不止上面这些，尽可能地进行功能的解耦和拆解
+
+完成上面需求后，现在需求做一些小的变更
+
+输出格式变为：2008-10-10 Monday 07:10:30 PM
+
+基于上面的需求，要求，同时在页面上，输出两种格式的日期时间
+希望通过上面的练习，让你体会函数的概念、作用和价值
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+<body>
+
+    <p id="p1">a</p>
+    <p id="p2">a</p>
+  
+    <script>
+    setInterval(update, 1000);
+
+    function update() {
+        today = new Date();
+        var Y = getYear();
+        var M = getMonth();
+        var D = getDay();
+        var W1 = getWeekDay1();
+        var W2 = getWeekDay2();
+        var H1 = getHour1();
+        var H2 = getHour2();
+        var Mi = getMinute();
+        var S = getSecond();
+        if (H1 < 12) {
+            var APM = "AM";
+        } else {
+            var APM = "PM";
+        };
+        var t1 = Y + "-" + M + "-" + D + " " + W1 + " " + H1 + ":" + Mi + ":" + S + APM;
+        var t2 = Y + "年" + M + "月" + D + "日" + " " + W2 + " " + H2 + ":" + Mi + ":" + S + APM;
+        document.getElementById("p1").innerHTML = t1;
+        document.getElementById("p2").innerHTML = t2;
+    };
+    
+    /*获得年份*/
+    function getYear() {
+        var year = today.getFullYear();
+        return year;
+    };
+
+    /*获得月份*/
+    function getMonth() {
+        var month = today.getMonth();
+        if (month < 10) {
+            return ("0" + month);
+        } else {
+            return month;
+        }
+    };
+
+    /*获得日*/
+    function getDay() {
+        var day = today.getDate();
+        if (day < 10) {
+            return ("0" + day);
+        } else {
+            return day;
+        }
+    };
+
+    /*获取小时1*/
+    function getHour1() {
+        var hour = today.getHours();
+        if (hour < 12) {
+            return ("0" + hour);
+        } else if (hour > 12) {
+            return ("0" + (hour-12));
+        } else {
+            return hour;
+        }
+    };
+
+    /*获取小时2*/
+    function getHour2() {
+        var hour = today.getHours();
+        return hour;
+    };
+
+    /*获取分钟*/
+    function getMinute() {
+        var minute = today.getMinutes();
+        if (minute < 10) {
+            return ("0" + minute);
+        } else {
+            return minute;
+        }
+    };
+
+    /*获取秒*/
+    function getSecond() {
+        var second = today.getSeconds();
+        if (second < 10) {
+            return ("0" + second);
+        } else {
+            return second;
+        }
+    };
+
+    /*获得星期-1*/
+    function getWeekDay1() {
+        var weekDay = today.getDay();
+        var weekList = new Array(7);
+        weekList[0]="Sunday";
+        weekList[1]="Monday";
+        weekList[2]="Tuesday";
+        weekList[3]="Wednesday";
+        weekList[4]="Thursday";
+        weekList[5]="Friday";
+        weekList[6]="Saturday";
+        return weekList[weekDay];
+    };
+
+    /*获得星期-2*/
+    function getWeekDay2() {
+        var weekDay = today.getDay();
+        var weekList = new Array(7);
+        weekList[0]="星期日";
+        weekList[1]="星期一";
+        weekList[2]="星期二";
+        weekList[3]="星期三";
+        weekList[4]="星期四";
+        weekList[5]="星期五";
+        weekList[6]="星期六";
+        return weekList[weekDay];
+    };
+
+    
+
+    </script>
+</body>
+</html>
+

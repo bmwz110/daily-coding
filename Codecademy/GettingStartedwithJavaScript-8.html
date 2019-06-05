@@ -1,0 +1,25 @@
+<!--Write a function, howOld(), that has two number parameters, age and year, and returns how old someone who is currently that age was (or will be) during that year.-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Code Challenges: Javascript Fundamentals</title>
+    </head>
+    <body>
+       <script>
+           var myDate = new Date();
+           var currentYear = myDate.getFullYear();
+           howOld = (age, year) => {
+               if (year >= currentYear) {
+                   //age += year - currentYear;
+                   console.log(`You will be ${age + year - currentYear} in the year ${year}`);
+               } else if (currentYear - year > age) {
+                   console.log(`The year ${year} was ${currentYear - year - age} years before you were born.`);
+               } else {
+                   console.log(`You were ${year - currentYear + age} in the year ${year}`);
+               };
+           };
+           howOld(25,2134);
+       </script>
+    </body>
+</html>

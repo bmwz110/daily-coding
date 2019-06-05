@@ -1,0 +1,32 @@
+<!--
+  比较两个数组，然后返回一个新数组，该数组的元素为两个给定数组中所有独有的数组元素。换言之，返回两个数组的差异。
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function diff(arr1, arr2) {
+        var newArr = [];
+        for (var i = 0; i < arr1.length; i++) {
+          if (arr2.indexOf(arr1[i]) === -1) {
+            newArr.push(arr1[i]);
+          }
+        }
+        for (var j = 0; j < arr2.length; j++) {
+          if (arr1.indexOf(arr2[j]) === -1) {
+            newArr.push(arr2[j]);
+          }
+        }
+            
+            
+            
+        return newArr;
+      }
+
+      diff([1, 5, 3, 25], [1, 2, 13, 4, 5]);
+    </script>
+  </body>
+</html>

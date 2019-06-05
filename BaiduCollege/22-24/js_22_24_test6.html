@@ -1,0 +1,56 @@
+<!--
+基于以上代码，实现如按钮中描述的功能：
+1. 实现如阅读材料中，队列的相关入队、出队、获取队头、判空的操作
+2. 队头对应数组中最后一个元素
+3. 入队和出队操作后，需要在 id 为 queue-cont 的 p 标签中更新显示队列中的内容，队头在最右侧，中间用 -> 连接（练习使用数组的join方法）
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+    </head> 
+    <body>
+        <input id="stack-input" type="text">
+        <p id="stack-cont">栈内容：apple-&gt;pear</p>    
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+
+        <script>
+            var stack = ["apple", "pear"];
+
+            var btn0 = document.getElementById("push-btn");
+            var btn1 = document.getElementById("pop-btn");
+            var btn2 = document.getElementById("font-btn");
+            var btn3 = document.getElementById("empty-btn");
+
+            btn0.onclick = function() {
+                var content = document.getElementById("stack-input").value;
+                stack.push(content);
+                document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.join("-&gt;");
+            };
+
+            btn1.onclick = function() {
+                var content = document.getElementById("stack-input").value;
+                stack.pop(content);
+                document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.join("-&gt;");
+            };
+
+            btn2.onclick = function() {
+                console.log(stack[stack.length-1]);
+            };
+
+            btn3.onclick = function() {
+                if (stack.length == 0) {
+                    console.log("The stack is empty!");
+                } else {
+                    console.log("The stack is not empty!");
+                };
+            };
+
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,70 @@
+<!--
+  将给定的数字转换成罗马数字。只给5000以下。
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      var newNum = [];
+      function convert(num) {
+        newNum = [];
+        var x1 = Math.floor(num / 1000);
+        var x2 = Math.floor((num - 1000 * x1) / 100);
+        var x3 = Math.floor((num - 1000 * x1 - 100 * x2) / 10);
+        var x4 = num - Math.floor(num / 10) * 10;
+        
+        // 千位
+        copy(x1, "M");
+
+        //百位
+        if (x2 < 4) {
+          copy(x2, "C");
+        } else if (x2 === 4) {
+          copy(1, "CD");
+        } else if (x2 === 9) {
+          copy(1, "CM")
+        } else {
+          copy(1, "D");
+          copy(x2 - 5, "C");
+        }
+
+        // 十位
+        if (x3 < 4) {
+          copy(x3, "X");
+        } else if (x3 === 4) {
+          copy(1, "XL");
+        } else if (x3 === 9) {
+          copy(1, "XC")
+        } else {
+          copy(1, "L");
+          copy(x3 - 5, "X");
+        }
+
+        // 个位
+        if (x4 < 4) {
+          copy(x4, "I");
+        } else if (x4 === 4) {
+          copy(1, "IV");
+        } else if (x4 === 9) {
+          copy(1, "IX")
+        } else {
+          copy(1, "V");
+          copy(x4 - 5, "I");
+        }
+        
+        console.log(newNum.join(""));
+      }
+                
+      function copy(num, alp) {
+          for (var i = 0; i < num; i++) {
+            newNum.push(alp);
+          }
+      }
+
+      convert(2);
+    </script>
+  </body>
+</html>

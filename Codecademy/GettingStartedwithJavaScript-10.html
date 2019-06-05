@@ -1,0 +1,30 @@
+<!--Write a function, toEmoticon(), that takes in a string and returns the corresponding emoticon as a string. Use a switch/case, and cover these cases:
+
+'shrug' should return '|_{"}_|'
+'smiley face' should return ':)'
+'frowny face' should return':('
+'winky face' should return ';)'
+'heart' should return '<3'
+any other input should return '|_(* ~ *)_|'-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Code Challenges: Javascript Fundamentals</title>
+    </head>
+    <body>
+       <script>
+           toEmoticon = str => {
+               switch (true) {
+                   case (str === "shrug"): return "|_{\"}_|"; break;
+                   case (str === "smiley face"): return ":)"; break;
+                   case (str === "frowny face"): return ":("; break;
+                   case (str === "winky face"): return ";)"; break;
+                   case (str === "heart"): return "<3"; break;
+                   default: return "|_(* ~ *)_|"
+               }
+           }
+           console.log(toEmoticon("smiley face"));
+       </script>
+    </body>
+</html>

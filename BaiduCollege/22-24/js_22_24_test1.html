@@ -1,0 +1,161 @@
+
+<!--
+基于如上HTML，实现需求
+1.按照HTML中按钮的描述以此实现功能
+2.计算结果显示在 id 为 result 的 P 标签中
+3.除了第一个按钮，其它按钮操作时，都需要判断输入是否为数字，否则在 console 中输出错误信息
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+    </head> 
+    <body> 
+        <div>
+            <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+            <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+        </div>
+        <div>
+            <button>判断当前选中的输入框输入内容是否为数字</button>
+            <button>把 A 四舍五入为 B 个小数位数的数字</button>
+            <button>当前选中数字的绝对值</button>
+            <button>对当前选中的数字进行上舍入</button>
+            <button>对当前选中的数字进行下舍入</button>
+            <button>把当前选中的数字四舍五入为最接近的整数</button>
+            <button>返回 A 和 B 中的最高值</button>
+            <button>返回 A 和 B 中的最低值</button>        
+        </div>
+        <p id="result"></p>
+        <script>
+            var oDiv = document.getElementsByTagName("div")[1];
+            var oA = document.getElementById("radio-a");
+            var oB = document.getElementById("radio-b");
+            var iA = document.getElementById("num-a");
+            var iB = document.getElementById("num-b");
+            var btn0 = oDiv.getElementsByTagName("button")[0];
+            var btn1 = oDiv.getElementsByTagName("button")[1];
+            var btn2 = oDiv.getElementsByTagName("button")[2];
+            var btn3 = oDiv.getElementsByTagName("button")[3];
+            var btn4 = oDiv.getElementsByTagName("button")[4];
+            var btn5 = oDiv.getElementsByTagName("button")[5];
+            var btn6 = oDiv.getElementsByTagName("button")[6];
+            var btn7 = oDiv.getElementsByTagName("button")[7];
+            
+            /*判断当前选中的输入框输入内容是否为数字*/
+            btn0.onclick = function() {
+                var re = /^(\-|\+)?\d+(\.\d+)?$/; 
+                /*/^[0-9]+.?[0-9]*$/会将汉字和字母转化为数字后
+                进行判断，从而导致“1人”“123a”均被判断为数字*/
+                if (oA.checked) {
+                    var num = iA.value;
+                    if (re.test(num)) {
+                        console.log("Input is a number!");
+                    } else {
+                        console.log("Input is not a number!");
+                    }
+                } else {
+                    var num = iB.value;
+                    if (re.test(num)) {
+                        console.log("Input is a number!");
+                    } else {
+                        console.log("Input is not a number!");
+                    }
+                }
+            };
+
+            /*判断是否为数字*/
+            function jud(a,b) {
+                var re = /^(\-|\+)?\d+(\.\d+)?$/; 
+                if (re.test(a) && re.test(b)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+
+            /*把 A 四舍五入为 B 个小数位数的数字*/
+            /*本判断方法可用于其他，不再赘述*/
+            btn1.onclick = function() {
+                var num1 = iA.value;   
+                var num2 = iB.value;
+                if (jud(num1,num2)) {
+                    var num3 = Math.pow(10,num2);
+                    var res = Math.round(num1 * num3) / num3;
+                    console.log(res);
+                } else {
+                    console.log("Please input number!");
+                }      
+            };
+
+            /*当前选中数字的绝对值*/
+            btn2.onclick = function() {
+                if (oA.checked) {
+                    var res = Math.abs(iA.value);
+                    console.log(res);
+                } else {
+                    var res = Math.abs(iB.value);
+                    console.log(res);
+                }
+            };
+
+            /*对当前选中的数字进行上舍入*/
+            btn3.onclick = function() {
+                if (oA.checked) {
+                    var res = Math.ceil(iA.value);
+                    console.log(res);
+                } else {
+                    var res = Math.ceil(iB.value);
+                    console.log(res);
+                }
+            };
+
+            /*对当前选中的数字进行下舍入*/
+            btn4.onclick = function() {
+                if (oA.checked) {
+                    var res = Math.floor(iA.value);
+                    console.log(res);
+                } else {
+                    var res = Math.floor(iB.value);
+                    console.log(res);
+                }
+            };
+
+            /*把当前选中的数字四舍五入为最接近的整数*/
+            btn5.onclick = function() {
+                if (oA.checked) {
+                    var res = Math.round(iA.value);
+                    console.log(res);
+                } else {
+                    var res = Math.round(iB.value);
+                    console.log(res);
+                }
+            };
+
+            /*返回 A 和 B 中的最高值*/
+            btn6.onclick = function() {
+                var num1 = iA.value;
+                var num2 = iB.value;
+                if (num1 > num2) {
+                    console.log(num1);
+                } else {
+                    console.log(num2);
+                }
+            };
+
+            /*返回 A 和 B 中的最小值*/
+            btn7.onclick = function() {
+                var num1 = iA.value;
+                var num2 = iB.value;
+                if (num1 < num2) {
+                    console.log(num1);
+                } else {
+                    console.log(num2);
+                }
+            };
+
+        </script>
+    </body> 
+</html>
+

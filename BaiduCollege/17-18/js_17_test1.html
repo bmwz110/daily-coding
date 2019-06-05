@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>arithmetic</title>
+</head>
+<body>        
+    <input id="first_number" type="number" value="0" placeholder="第一个数字">
+    <input id="second_number" type="number" value="0" placeholder="第二个数字">
+    <button id="add_btn">加</button>
+    <button id="minus_btn">减</button>
+    <button id="times_btn">乘</button>
+    <button id="divide_btn">除</button>
+    <p id="result">运算结果</p>
+    <script> 
+        var stan = /^(\-|\+)?\d+(\.\d+)?$/;   /*这里用正则匹配，因为isNaN将部分非数字符号例如-+视为0*/
+        
+        document.getElementById("add_btn").onclick = function() {
+            var fn = document.getElementById("first_number").value;
+            var sn = document.getElementById("second_number").value;
+            if (!stan.test(fn) || !stan.test(sn)) {
+                console.log("input is not number!");
+            } else {
+                sum = Number(fn) + Number(sn);   /*通过.value获取的是字符串，需转为数值进行运算*/
+                document.getElementById("result").innerHTML = "运算结果： " + sum;
+            }
+        }
+        document.getElementById("minus_btn").onclick = function() {
+            var fn = document.getElementById("first_number").value;
+            var sn = document.getElementById("second_number").value;
+            if (!stan.test(fn) || !stan.test(sn)) {
+                console.log("input is not number!");
+            } else {
+                sum = Number(fn) - Number(sn);
+                document.getElementById("result").innerHTML = "运算结果： " + sum;
+            }
+        }
+        document.getElementById("times_btn").onclick = function() {
+            var fn = document.getElementById("first_number").value;
+            var sn = document.getElementById("second_number").value;
+            if (!stan.test(fn) || !stan.test(sn)) {
+                console.log("input is not number!");
+            } else {
+                sum = Number(fn) * Number(sn);
+                document.getElementById("result").innerHTML = "运算结果： " + sum;
+            }
+        }
+        document.getElementById("divide_btn").onclick = function() {
+            var fn = document.getElementById("first_number").value;
+            var sn = document.getElementById("second_number").value;
+            if (!stan.test(fn) || !stan.test(sn)) {
+                console.log("input is not number!");
+            } else if (sn == 0) {
+                console.log("The second number can't be zero!");
+            } else {
+                sum = Number(fn) / Number(sn);
+                document.getElementById("result").innerHTML = "运算结果： " + sum;
+            }
+        }
+        
+    </script>
+</body>
+</html>

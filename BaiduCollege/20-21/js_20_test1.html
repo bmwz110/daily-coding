@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Event</title>
+    </head>
+    <body>
+        <input id="name" type="text">
+        <button id="submit-btn">Submit</button>
+        <script>
+        var btn = document.getElementById("submit-btn");
+
+        btn.onclick = function() {
+            var content = document.getElementById("name").value;
+            console.log(content);
+            btn.style.cssText = "color: white";
+        };
+
+        document.onkeydown = function(event) {
+            var ev = document.all?window.event:event;  /*判断是否为IE浏览器，若是，则用window.event*/
+            if (ev.keyCode === 13) {
+                var content = document.getElementById("name").value;
+                console.log(content);
+            } else if (ev.keyCode === 27) {
+                document.getElementById("name").value = "";
+            }
+        };
+
+
+
+        </script>
+    </body>
+</html>

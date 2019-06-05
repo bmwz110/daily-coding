@@ -1,0 +1,27 @@
+<!--
+  例如:chunk([1,2,3,4],2)=[[1,2],[3,4]];
+
+  chunk([1,2,3,4,5],2)=[[1,2],[3,4],[5]];
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function chunk(arr, size) {
+        var newStr = [];
+        var blo = Math.ceil(arr.length / size);
+        for (var i = 0; i < blo; i++) {
+          newStr[i] = arr.slice(i * size, (i + 1) * size);
+        }
+        
+        
+        return newStr;
+      }
+
+      chunk([0, 1, 2, 3, 4, 5], 4);
+    </script>
+  </body>
+</html>

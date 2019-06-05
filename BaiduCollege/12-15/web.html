@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Wechat</title>
+        <style>
+            html {
+                height: 100%;   /*父元素默认height为undefined，故需规定高度*/
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                height: 100%;
+                margin: 0;   
+                padding: 0;
+                min-width: 1000px;
+            }
+
+            #navi1 {
+                float: left;
+                position: fixed;
+                height: 100%;
+                width: 100px;
+                background-color: rgb(29,37,49);
+                text-align: center;
+                bottom: 0;
+            }
+
+            #navi1 img {
+                margin-top: 20px;
+            }
+
+            #navi2 {
+                float: left;
+                position: relative;
+                left: 100px;
+                width: 220px;
+                height: 120%;
+                overflow: scroll;
+                background-color: rgb(34,44,60);
+                padding-left: 30px;  
+            }
+
+            #navi2 hr {
+                height: 1px;
+                width: 180px;
+                border: none;
+                background-color: rgb(42,53,71);
+            }
+
+            #navi2 h5 {
+                color: rgb(87,99,117);
+            }
+
+            #navi2 p {
+                color: rgb(183,192,205);
+                font-size: 90%;
+            }
+
+            #navi2_4 p{
+                color: white;
+                position: relative;
+                top: 40px;
+                left: -12px;
+            }
+
+            #navi2_1 img {
+                position: absolute;
+                top: 25px;
+                left: 200px;
+            }
+
+            #navi2_1 img:nth-of-type(2) {
+                position: absolute;
+                top: 95px;
+                left: 185px;
+            }
+
+            #navi2_2 img {
+                position: absolute;
+                top: 278px;
+                left: 200px;
+            }
+
+            #navi2_3 img {
+                position: absolute;
+                top: 443px;
+                left: 200px;
+            }
+
+            #navi2_3 img:nth-of-type(2) {
+                position: absolute;
+                top: 520px;
+                left: 185px;
+            }
+
+            #navi2_3 img:nth-of-type(3) {
+                position: absolute;
+                top: 588px;
+                left: 190px;
+            }
+
+            #navi2_4 {
+                width: 250px;
+                position: fixed;
+                background-color: rgb(34,44,60);
+                bottom: 0;
+                left: 100px;
+                text-align: center;
+            }
+
+            #navi2_4 p {
+                position: relative;
+                top: -2px;
+                left: 2px;
+            }
+
+            #navi2_4 img {
+                position: relative;
+                top: -15px;
+            }
+
+            #message{
+                float: left;
+                position: fixed;
+                left: 350px;
+                width: calc(100% - 350px);
+                height: 80px;
+                background-color: white;
+                z-index: 999;
+                border-bottom: 1px solid rgb(229,232,238);
+            }
+
+            #message p:nth-child(1){
+                float: left;
+                font-size: 200%;
+                width: calc(100% - 200px);
+                position: relative;
+                left: 10px;
+                top: -15px;
+                color: rgb(53,64,82);
+            }
+
+            #user {
+                float: left;
+                width: 200px;
+                height: 100%;
+            }
+
+            #user p:nth-of-type(1){
+                float: left;
+                color: rgb(35,153,241);
+                padding-left: 10px;
+            }
+
+            #user p:nth-of-type(2){
+                float: left;
+                font-size: 80%;
+                position: relative;
+                left: 9px;
+                top: -28px;
+            }
+
+            #user img:nth-of-type(1){
+                float: left;
+                position: relative;
+                left: 5px;
+                top: 12px;
+            }
+
+            #user img:nth-of-type(2){
+                position: relative;
+                left: 18px;
+                top: -18px;
+            }
+
+            #info {
+                position: relative;
+                left: 100px;
+                top: 80px;
+                float: left;
+                width: calc(100% - 350px);
+                height: calc(100% - 80px);
+                display: flex;
+            }
+
+            #left {
+                flex: 1;
+                height: 130%;
+                overflow: scroll;
+            }
+
+            #search {
+                padding: 10px 0 10px 40px;
+                border-right: 1px solid rgb(229,232,238);
+            }
+
+            #search input {
+                height: 30px;
+                width: 80%;
+            }
+
+            #search button {
+                background-image: url(images/left1.png);
+                background-repeat: no-repeat;
+                border: 0px;
+                width: 20px;
+                height: 20px;
+                position: relative;
+                left: -30px;
+                top: 5px;
+            }
+
+            .leftPerson {
+                float: left;
+                border-top: 1px solid rgb(229,232,238);
+                border-right: 1px solid rgb(229,232,238);
+                position: relative;
+            }
+
+            #left div img {
+                float: left;
+                padding: 10px 10px 0 10px;
+            }
+
+            #left div p:nth-of-type(1) {
+                float: left;
+            }
+
+            #left div p:nth-of-type(2) {
+                float: left;
+                color: grey;
+                font-size: 80%;
+                position: absolute;
+                top: 27px;
+                left: 65px;
+            }
+
+            #left div p:nth-of-type(3) {
+                color: grey;
+                font-size: 90%;
+                float: right;
+                position: relative;
+                right: 15px;
+                top: 5px;
+            }
+
+            #left div p:nth-of-type(4) {
+                float: left;
+                padding: 0 30px 0 15px;
+            }
+
+            #left div:nth-of-type(2) p:nth-of-type(1){
+                color: rgb(35,153,241);
+            }
+
+            #left div:nth-of-type(2) img:nth-of-type(2){
+                position: relative;
+                top: 12px;
+            }
+
+            #right {
+                flex: 2;
+                height: 130%;
+                overflow: scroll;
+            }
+
+            #rightTop {
+                height: calc(100% - 70px);
+                overflow: scroll;
+            }
+
+            #basic {
+                height: 55px;
+                border-top: 1px solid rgb(229,232,238);
+                border-bottom: 1px solid rgb(229,232,238);
+            }
+
+            #basic p:nth-of-type(1) {
+                float: left;
+                padding-left: 15px;
+            }
+
+            #basic p:nth-of-type(2) {
+                color: rgb(86,104,138);
+            }
+
+            #basic img,#basic p:nth-of-type(2) {
+                float: right;
+            }
+
+            #basic img:nth-of-type(1) {
+                float: left;
+                position: relative;
+                top: 23px;
+                left: 10px;
+            }
+
+            #basic img:nth-of-type(2) {
+                position: relative;
+                top: 12px;
+                left: -180px;
+            }
+
+            #basic img:nth-of-type(3) {
+                position: relative;
+                top: 15px;
+                left: -60px;
+            }
+
+            #basic img:nth-of-type(4) {
+                position: relative;
+                top: 12px;
+                left: 140px;
+            }
+
+            .part1 p,.part1 img,.part1 input,.part1 hr{
+                float: left;
+            }
+
+            .part1 img {
+                padding: 20px 10px 0 20px;
+            }
+
+            .time {
+                color: grey;
+                padding-left: 10px;
+            }
+
+            .article {
+                padding: 0 20px 0 76px;
+                margin-top: -16px;
+                font-size: 90%;
+            }
+
+            .one {
+                height: 1px;
+                width: 40%;
+                border: none;
+                background-color: rgb(229,232,238);
+                position: relative;
+            }
+
+            .two {
+                height: 1px;
+                width: 40%;
+                border: none;
+                background-color: rgb(229,232,238);
+                position: relative;
+                right: -10%;
+            }
+
+            #dividing {
+                width: 100%;
+                float: left;
+                margin-bottom: -30px; 
+            }
+
+            #dividing p {
+                position: relative;
+                left: 5%;
+                top: -20px;
+                color: grey;
+            }
+
+            #photo1, #photo2 {
+                float: left;
+                position: relative;
+                left: 70px;
+                top: 0px;
+                margin: 0 20px 15px 0;;
+            }
+
+            #photo1 {
+                background: url(images/image1.png);
+                width: 120px;
+                height: 85px;
+            }
+
+            #photo1:hover {
+                background: url(images/image1New.png);
+                width: 120px;
+                height: 85px;
+            }
+
+            #photo2 {
+                background: url(images/image2.png);
+                width: 120px;
+                height: 85px;
+            }
+
+            #photo2:hover {
+                background: url(images/image2New.png);
+                width: 120px;
+                height: 85px;
+            }
+
+            #chat {
+                position: fixed;
+                bottom: 0px;
+                height: 80px;
+                width: 100%;
+                background-color: white;
+            }
+
+            #chat input {
+                height: 44px;
+                width: 30%;
+                position: relative;
+                left: 11%;
+                top: 15px;
+            }
+
+            #chat button {
+                height: 50px;
+                width: 50px;
+                background-image: url(images/button2.png);
+                z-index: 2;
+                position: relative;
+                right: 20%;
+                top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="navi1">
+            <img src="images/navi1_1.png">
+            <img src="images/navi1_2.png">
+            <img src="images/navi1_3.png">
+            <img src="images/navi1_4.png">
+        </div>
+
+        <div id="navi2">
+            <div id="navi2_1">
+                <h5>MENU</h5>
+                <p>Overview</p>
+                <p>Sales</p>
+                <p>Your Staff</p>
+                <p>Analytics &<br>Targeting</p>
+                <p>What's New</p>
+                <img src="images/navi2_1.png">
+                <img src="images/navi2_2.png">
+                <hr>
+            </div>
+            <div id="navi2_2">
+                <h5>YOUR PRODUCTS</h5>
+                <img src="images/navi2_1.png">
+                <p>Books</p>
+                <p>Tutorials</p>
+                <p>Stocks</p>
+                <p>Infographics</p>
+                <hr>
+            </div>
+            <div id="navi2_3">
+                <h5>DASHBOARD</h5>
+                <p>Messages</p>
+                <p>Connections</p>
+                <p>Integrations</p>
+                <p>Account Settings</p>
+                <p>App Settings</p>
+                <img src="images/navi2_1.png">
+                <img src="images/navi2_3.png">
+                <img src="images/navi2_4.png">
+            </div>
+            <div id="navi2_4">
+                <p>Monthly Goals &nbsp;&nbsp;&nbsp;&nbsp; $580/$3200</p>
+                <img src="images/navi2_5.png">
+            </div>
+        </div>
+
+        <div id="message">
+            <p>Messages</p>
+            <div id="user">
+                <img src="images/message_1.png">
+                <p>Jordan J.</p>
+                <p>Administrator</p>
+                <img src="images/message_2.png">
+            </div>
+        </div>
+
+        <div id="info">
+            <div id="left">
+                <div id="search">
+                    <input type="text" placeholder="Search"/>
+                    <button type="submit"></button>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left1Person.png">
+                    <img src="images/dot.png">
+                    <p>Bessie Berry</p>
+                    <p>Twitter</p>
+                    <p>3m</p>
+                    <p>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable...</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left2Person.png">
+                    <p>Victor Weber</p>
+                    <p>Adobe</p>
+                    <p>8m</p>
+                    <p>I shared this on my fb wall a few months back, and I thought I'd share it here again because it's such a great...</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left3Person.png">
+                    <p>Dustin Benson</p>
+                    <p>Yahoo</p>
+                    <p>Yesterday</p>
+                    <p>If there is anyone who needs an invitation please add yourself in the comments of this post!</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left4Person.png">
+                    <p>Jack Mason</p>
+                    <p>Snapchat</p>
+                    <p>Yesterday</p>
+                    <p>BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on intranet inside...</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left5Person.png">
+                    <p>Stephen Shelton</p>
+                    <p>Adobe</p>
+                    <p>13 Jun</p>
+                    <p>Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days dl speed...</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left6Person.png">
+                    <p>Sally Willis</p>
+                    <p>Twitter</p>
+                    <p>12 Jun</p>
+                    <p>Yes, it's O2: 'internet extreme', which is no longer offered.</p>
+                </div>
+                <div class="leftPerson">
+                    <img src="images/left7Person.png">
+                    <p>Robert Patton</p>
+                    <p>A Team</p>
+                    <p>9 Jun</p>
+                    <p>I change my service from this 4Mb plan to their much cheaper 8Mb plan, my speed will dramatically decrease.</p>
+                </div>
+            </div>
+            <div id="right">
+                <div id="rightTop">
+                <div id="basic">
+                    <p>Bassie Berry</p>
+                    <img src="images/dot2.png">
+                    <img src="images/basic1.png">
+                    <img src="images/basic2.png">
+                    <p>1 of 28</p>
+                    <img src="images/basic3.png">
+                </div>
+                <div class="part1">
+                    <img src="images/left1Person.png">
+                    <p>Bessie Berry</p>
+                    <p class="time">8:31 AM</p>
+                    <p class="article">Hi guys Ive got the O2 package and have really slow internet. A speed check online said i can get 3mbps but it seems more like 0.5 these days, just freezing and taking ages to open pages and open audio files for example. I have decided to switch to the UPC package which offers 10mbps but do you think i will get it?</p>
+                    <img src="images/right2Person.png">
+                    <p>Jordan Jackson</p>
+                    <p class="time">8:31 AM</p>
+                    <p class="article">I have internet for 9 month and nevere could benefit from the full capacity of 5Mbit/s as it is filtered by O2 when it detect traffic on public p2p sharing in my situation all my internet speed slows to 512Kbit/s. I never had 400KB/s on when downloading from p2p public servers like torrent emule etc. I downoad with 500KB/s from private trakers instead. So conlcusion O2 block trafic on p2p connections. I have made hundreds of test in Italy and Sweden and Romania with the same file to doanload with the same setting and same antivirus and just needed to open ports in firewall and forward same ports and the speed was at full capacity in 1 minute. here in 9 month never had this luck.</p>
+                    <div id="dividing">
+                        <hr class="one">
+                        <p>Tuesday</p>
+                        <hr class="two">
+                    </div>
+                </div>
+                <div class="part1">
+                    <img src="images/left1Person.png">
+                    <p>Bessie Berry</p>
+                    <p class="time">8:31 AM</p>
+                    <p class="article">Funny comparison. so would the proper antivirus not slow down the internet as much or do you mean a freebie doenst protect the computer from viruses?</p>
+                    <img src="images/right2Person.png">
+                    <p>Jordan Jackson</p>
+                    <p class="time">8:31 AM</p>
+                    <p class="article">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and haven't had any problems. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. I max out at about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a noisy telephone line, not because I'm being throttled. When my uploads go over 25 KB/sec (note, bytes, not bits), my download speed suffers. This is expected, as downloads require upload bandwidth as well.</p>
+                    <div id="photo1"></div>
+                    <div id="photo2"></div>
+                    <div id="dividing">
+                        <hr class="one">
+                        <p>New Message</p>
+                        <hr class="two">
+                    </div>
+                </div>
+                <div class="part1">
+                    <img src="images/left1Person.png">
+                    <p>Bessie Berry</p>
+                    <p class="time">8:31 AM</p>
+                    <p class="article">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it.</p>
+                </div>
+                </div>
+                <div id="chat" class="part1">
+                    <button type="submit"></button>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

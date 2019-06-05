@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Team Stats</title>
+    </head>
+    <body>
+        <script>
+            const team = {
+                _players: [
+                    {firstName: 'Pablo', lastName: 'Sanchez', age: 11}
+                ],
+                _games: [
+                    {opponent: 'Fre', teamPoints: 42, opponentPoints: 13}
+                ],
+                addPlayer: function(firstName, lastName, age) {
+                    let player = {
+                        firstName: firstName,
+                        lastName: lastName,
+                        age: age
+                    };
+                    this._players.push(player);
+                },
+                addGame: function(opponent, teamPoints, opponentPoints) {
+                    let game = {
+                        opponent: opponent,
+                        teamPoints: teamPoints,
+                        opponentPoints: opponentPoints
+                    };
+                    this._games.push(game);
+                }
+            };
+            team.addPlayer("Steph", "Curry", 28);
+            team.addPlayer("Lisa", "Leslie", 44);
+            team.addGame("Gre", 56, 28);
+            team.addGame("Ame", 81, 31);
+            console.log(team._players);
+            console.log(team._games);
+        </script>
+    </body>
+</html>

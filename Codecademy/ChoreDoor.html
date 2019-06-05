@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Chore Door</title>
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet" type="text/css">
+        <style>
+            body {
+                background-color: #010165;
+                margin: 0px;
+            }
+            .header {
+                background-color: #00ffff;
+                text-align: center;
+            }
+            .title-row {
+                margin: 42px 0 21px 0;
+                text-align: center;
+            }
+            .instructions-title {
+                display: inline;
+                font-size: 18px;
+                color: #00ffff;
+                font-family: "Work Sans";
+            }
+            .instructions-row {
+                margin: 0 auto;
+                width: 400px;
+            }
+            .instructions-number {
+                padding-right: 25px;
+                font-family: "Work Sans";
+                font-size: 36px;
+                color: #00ffff;
+            }
+            .instructions-text {
+                padding: 10px;
+                font-family: "Work Sans";
+                font-size: 14px;
+                color: #ffffff;
+            }
+            .door-row {
+                text-align: center;
+            }
+            .door-frame {
+                cursor: pointer;
+                padding: 10px;
+            }
+            .start-row {
+                margin: auto;
+                width: 120px;
+                height: 43px;
+                font-family: "Work Sans";
+                background-color: #eb6536;
+                padding-top: 18px;
+                font-size: 18px;
+                text-align: center;
+                color: #010165;
+                margin-bottom: 21px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/logo.svg"/>
+        </div>
+        <div class="title-row">
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/star.svg"/>
+            <p class="instructions-title">Instructions</p>
+            <img src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/star.svg"/>
+        </div>
+        <table class="instructions-row">
+            <tr>
+                <td class="instructions-number">1</td>
+                <td class="instructions-text">Hiding behind one of these doors is the ChoreBot.</td>
+            </tr>
+            <tr>
+                <td class="instructions-number">2</td>
+                <td class="instructions-text">Your mission is to open all of the doors without running into the ChoreBot.</td>
+            </tr>
+            <tr>
+                <td class="instructions-number">3</td>
+                <td class="instructions-text">If you manage to avoid the ChoreBot until you open the very last door, you win!</td>
+            </tr>
+            <tr>
+                <td class="instructions-number">4</td>
+                <td class="instructions-text">See if you can score a winning streak!</td>
+            </tr>
+        </table>
+        <div class="door-row">
+            <img id="door1" class="door-frame" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/closed_door.svg"/>
+            <img id="door2" class="door-frame" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/closed_door.svg"/>
+            <img id="door3" class="door-frame" src="https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/closed_door.svg"/>
+        </div>
+        <div id="start" class="start-row">
+            Good luck!
+        </div>
+        <script>
+            var doorImage1 = document.getElementById("door1");
+            var doorImage2 = document.getElementById("door2");
+            var doorImage3 = document.getElementById("door3");
+            var numClosedDoors = 3;
+            var openDoor1;
+            var openDoor2;
+            var openDoor3;
+            var startButton = document.getElementById("start");
+            var currentlyPlaying = true;
+            var closedDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/closed_door.svg";
+            var botDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/robot.svg";
+            var beachDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/beach.svg";
+            var spaceDoorPath = "https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/space.svg";
+            doorImage1.onclick = () => {
+                if (!isClicked(doorImage1) && currentlyPlaying) {
+                    doorImage1.src = openDoor1;
+                    playDoor(doorImage1);
+                };
+            };
+            doorImage2.onclick = () => {
+                if (!isClicked(doorImage2) && currentlyPlaying) {
+                    doorImage2.src = openDoor2;
+                    playDoor(doorImage2);
+                };
+            };
+            doorImage3.onclick = () => {
+                if (!isClicked(doorImage3) && currentlyPlaying) {
+                    doorImage3.src = openDoor3;
+                    playDoor(doorImage3);
+                };
+            };
+            startButton.onclick = () => {
+                if (currentlyPlaying === false) {
+                    startRound();
+                };
+            };
+            const startRound = () => {
+                doorImage1.src = closedDoorPath;
+                doorImage2.src = closedDoorPath;
+                doorImage3.src = closedDoorPath;
+                numClosedDoors = 3;
+                startButton.innerHTML = "Good luck!";
+                currentlyPlaying = true;
+                randomChoreDoorGenerator(numClosedDoors);
+            };
+            const randomChoreDoorGenerator = n => {        
+                let choreDoor = Math.floor(Math.random() * n);
+                if (choreDoor === 0) {
+                    openDoor1 = botDoorPath;
+                    openDoor2 = beachDoorPath;
+                    openDoor3 = spaceDoorPath;
+                } else if (choreDoor === 1) {
+                    openDoor1 = beachDoorPath;
+                    openDoor2 = botDoorPath;
+                    openDoor3 = spaceDoorPath;
+                } else {
+                    openDoor1 = spaceDoorPath;
+                    openDoor2 = beachDoorPath;
+                    openDoor3 = botDoorPath;
+                };
+            };
+            const isBot = door => {
+                if (door.src === botDoorPath) {
+                    return true;
+                } else {
+                    return false;
+                };
+            };
+            const isClicked = door => {
+                if (door.src === closedDoorPath) {
+                    return false;
+                } else {
+                    return true;
+                };
+            };
+            const playDoor = door => {
+                numClosedDoors--;
+                if (numClosedDoors === 0) {
+                    gameOver("win");
+                } else if (isBot(door)) {
+                    gameOver();
+                };
+            };
+            const gameOver = status => {
+                console.log("The game over!");
+                if (status === "win") {
+                    startButton.innerHTML = "You win! Play again?";
+                } else {
+                    startButton.innerHTML = "Game over! Play again?";
+                    currentlyPlaying = false;
+                };
+            };
+            
+            startRound();
+        </script>
+    </body>
+</html>

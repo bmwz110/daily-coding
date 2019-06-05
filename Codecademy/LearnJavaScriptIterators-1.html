@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mini Linter</title>
+    </head>
+    <body>
+        <script>
+            let story = 'Last weekend, I took literally the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it actually stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It\'s really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some extremely artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is actually very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an extremely beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you actually cross back into New York! At this point, you are very close to the end.';
+            let overusedWords = ['really', 'very', 'basically'];
+            let unnecessaryWords = ['extremely', 'literally', 'actually' ];
+
+            //Log how many words there are in this story to the console.
+            const storyWords = story.split(" ");
+            console.log(storyWords.length);
+
+            //There is an array of words that are unnecessary. Iterate over your array to filter out these words. 
+            const betterWords = [];
+            for (let i = 0; i < storyWords.length; i++) {
+                if (storyWords[i] != "extremely" && storyWords[i] != "extremely" && storyWords[i] != "extremely") {
+                    betterWords.push(storyWords[i]);
+                }
+            };
+
+            //know how many times they have used these overused words.
+            const fre = [0,0,0];
+            for (let i = 0; i < storyWords.length; i++) {
+                if (storyWords[i] === "really") {
+                    fre[0]++;
+                } else if (storyWords[i] === "very") {
+                    fre[1]++;
+                } else if (storyWords[i] === "basically") {
+                    fre[2]++;
+                } else {
+                    continue;
+                }
+            };
+            console.log(fre);
+
+            //count how many sentences are in the paragraph.
+            //同时以 . 和 ！进行分割
+            const storySen = story.split(/[.!]/);
+            console.log(storySen);
+            console.log(storySen.length);
+
+            //Write a function that finds the word that appears the greatest number of times.
+            let stat = aug => {
+                let list = [];
+                let max = 0;
+                for (let i = 0; i < aug.length; i++) {
+                    if (list[aug[i]]) {
+                        list[aug[i]]++;
+                    } else {
+                        list[aug[i]] = 1;
+                    };
+                };
+                //此处注意，对对象的遍历要使用for in
+                for (let j in list) {
+                    if (list[j] > max) {
+                        max = list[j];
+                    };
+                };
+                return max;
+            };
+            console.log(stat(storyWords));
+
+            //the overused words, remove it every other time it appears.
+            let posi1 = storyWords.indexOf("really");
+            let posi2 = storyWords.indexOf("very");
+            let posi3 = storyWords.indexOf("basically");
+            for (let i = posi1; i < storyWords.length; i++) {
+                if (storyWords[i] === "really") {
+                    storyWords.splice(i,1);
+                };
+            };
+            for (let i = posi2; i < storyWords.length; i++) {
+                if (storyWords[i] === "very") {
+                    storyWords.splice(i,1);
+                };
+            };
+            for (let i = posi3; i < storyWords.length; i++) {
+                if (storyWords[i] === "basically") {
+                    storyWords.splice(i,1);
+                };
+            };
+            console.log(storyWords.length);
+
+            
+
+        </script>
+    </body>
+</html>

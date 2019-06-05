@@ -1,0 +1,22 @@
+<!--检查回文（预先去掉非字母和数字）-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      var reg = /\W/g;   // 匹配一切非字母和数字字符
+      function palindrome(str) {
+        var oriStr = str.replace(reg, "").toLowerCase();
+        var newStr = oriStr.split("").reverse().join("");
+        if (newStr === oriStr) {
+          console.log("yes");
+        } else {
+          console.log("no");
+        }
+      }
+      palindrome("e!eye e");
+    </script>
+  </body>
+</html>

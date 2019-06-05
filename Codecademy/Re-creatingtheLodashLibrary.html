@@ -1,0 +1,127 @@
+<!--从大到小排序-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sort</title>
+    </head>
+    <body>
+        <script>
+
+            //返回上下界内的number值
+            const _ = {
+                //返回上下界内的number值
+                clamp: function(number, lower, upper) {
+                    let lowerClampedValue = Math.max(number, lower);
+                    let clampedValue = Math.min(lowerClampedValue, upper);
+                    return clampedValue;
+                },
+
+                //验证和纠正上下界
+                inRange: function(number, sValue, eValue) {
+                    if (eValue === undefined) {
+                        eValue = sValue;
+                        sValue = 0;
+                    }
+                    if (eValue < sValue) {
+                        let a = eValue;
+                        eValue = sValue;
+                        sValue = a;
+                    };
+                    if ((number >= sValue) && (number <= eValue)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                
+                //均匀增加空格，让str达到len指定长度
+                pad: function(str, len) {
+                    let gap = len - str.length;
+                    while (gap > 0) {
+                        let strWords = str.split(" ");
+                        for (let i = 0; i < strWords.length; i++) {
+                            strWords[i] = strWords[i] + "  ";
+                        };
+                        str = strWords.join(" "); 
+                        gap = len - str.length;
+                    };
+                    return str;
+                },
+                
+                //检验对象中是否存在key属性
+                has: function(obj, key) {
+                    if (obj[key] === undefined) {
+                        return false;
+                    } else {
+                        return true;
+                    };
+                },
+                
+                //对调对象中的key和value
+                //注意：不管是for-in还是Object.keys，遍历对象属性并非按照属性顺序，而是根据浏览器而不同
+                //一般先按数字顺序遍历，再按定义顺序遍历
+                invert: function(obj) {
+                    let newObj = new Object();
+                    for (item in obj) {
+                        newObj[obj[item]] = item;
+                    };
+                    return newObj;
+                },
+                
+                //返回对象中第一个value为true的key，若无，返回undefined
+                judge: function(value) {
+                    if (value === 29) {
+                        return true;
+                    } else {
+                        return false;
+                    };
+                },
+                findKey: function(obj) {
+                    for (item in obj) {
+                        ////如果一个函数中有this(findKey)，且被上一级对象所调用(window)，则this指向上一级对象(window)
+                        if (this.judge(obj[item]) === true) {
+                            return item;
+                            break;
+                        } else {
+                            continue;
+                        };
+                        return "undefined";
+                    };
+                },
+                
+                //从arr数组中删除第num个元素
+                drop: function(arr, num) {
+                    arr.splice(num-1,1);
+                    return arr;
+                },
+                
+                //从arr中删除元素直到pred函数返回false
+                pred: function(currentEle) {
+                    if (typeof currentEle === "string") {
+                        return true;
+                    } else {
+                        return false;
+                    };
+                },
+                dropWhile: function(arr) {
+                    let i = 0;
+                    while (this.pred(arr[i]) === true) {
+                        i++;
+                        continue;
+                    };
+                    arr.splice(0, i);
+                    return arr;
+                },
+                
+                //将arr拆分为size大小的子数组，如果没有提供size，则size为3
+                chunk: function(arr, size = 3) {
+                    while (arr.length > size) {
+                        console.log(arr.splice(0,size));
+                    };
+                    return arr; 
+                }
+            };
+        </script>
+    </body>
+</html>

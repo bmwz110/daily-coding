@@ -1,0 +1,24 @@
+<!--将str字符串重复num次-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function repeat(str, num) {
+        var newStr = "";
+        if (num > 0) {
+          for (var i = 0; i < num; i++) {
+            newStr = newStr.concat(str);
+          }
+          return newStr;
+        } else {
+          return "";
+        }
+      }
+
+      repeat("abc", 3);
+    </script>
+  </body>
+</html>

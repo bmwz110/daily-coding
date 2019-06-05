@@ -1,0 +1,146 @@
+<!--有如上对象，分别实现代码下方的几个函数，满足以下需求：
+
+1.假设id和name均不会重复，根据输入name找到对应的id
+2.假设id和name均不会重复，根据输入id找到对应的name
+3.把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+4.把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+5.把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>gif</title>
+    </head> 
+    <body>
+        <p>A</p>
+        <script>
+            var tree = {
+                "id": 0,
+                "name": "root",
+                "left": {
+                    "id": 1,
+                    "name": "Simon",
+                    "left": {
+                        "id": 3,
+                        "name": "Carl",
+                        "left": {
+                            "id": 7,
+                            "name": "Lee",
+                            "left": {
+                                "id": 11,
+                                "name": "Fate"
+                            }
+                        },
+                        "right": {
+                            "id": 8,
+                            "name": "Annie",
+                            "left": {
+                                "id": 12,
+                                "name": "Saber"
+                            }
+                        }
+                    },
+                    "right": {
+                        "id": 4,
+                        "name": "Tony",
+                        "left": {
+                            "id": 9,
+                            "name": "Candy"
+                        }
+                    }
+                },
+                "right": {
+                    "id": 2,
+                    "name": "right",
+                    "left": {
+                        "id": 5,
+                        "name": "Carl",
+                    },
+                    "right": {
+                        "id": 6,
+                        "name": "Carl",
+                        "right": {
+                            "id": 10,
+                            "name": "Kai"
+                        }        
+                    }
+                }
+            }
+            
+            //search function
+            function search(x) {
+                var re = [];
+                function find(y) {
+                    if (y != null) {
+                        if (y.name == x) {
+                            re.push(y.id);
+                        } else if (y.id == x) {
+                            re.push(y.name);
+                        } else {
+                            find(y.left);
+                            find(y.right);
+                        }
+                    }
+                }
+                find(tree);
+                return re;
+            }
+
+            // 假设id和name均不会重复，根据输入name找到对应的id
+            function findIdByName(name) {
+                var res = search(name);
+                console.log(res);
+            };
+
+            // 假设id和name均不会重复，根据输入id找到对应的name
+            function findNameById(id) {
+                var res = search(id);
+                console.log(res);
+            }
+
+            // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+            function getListWithDLR() {
+                var res = [];
+                function clr(obj) {
+                    if (obj != null) {
+                        res.push(obj.name);
+                        clr(obj.left);
+                        clr(obj.right);
+                    }
+                }
+                clr(tree);
+                console.log(res);
+            }
+
+            // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+            function getListWithLDR() {
+                var res = [];
+                function lcr(obj) {
+                    if (obj != null) {
+                        lcr(obj.left);
+                        res.push(obj.name);
+                        lcr(obj.right);
+                    }
+                }
+                lcr(tree);
+                console.log(res);
+            }
+
+            // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+            function getListWithLRD() {
+                var res = [];
+                function lrc(obj) {
+                    if (obj != null) {
+                        lrc(obj.left);
+                        lrc(obj.right);
+                        res.push(obj.name);
+                    }
+                }
+                lrc(tree);
+                console.log(res);
+            };
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,34 @@
+<!--
+  实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。
+  destroyer([1, 2, 3, 1, 2, 3], 2, 3) 应该返回 [1, 1].
+  destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3) 应该返回 [1, 5, 1].
+  destroyer([3, 5, 1, 2, 2], 2, 3, 5) 应该返回 [1].
+  destroyer([2, 3, 2, 3], 2, 3) 应该返回 [].
+  destroyer(["tree", "hamburger", 53], "tree", 53) 应该返回 ["hamburger"].
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      
+    function destroyer(arr) {
+      var newArr = Array.prototype.slice.call(arguments);
+      var aimArr = newArr.slice(0,1);
+      for (var i = 1; i < newArr.length; i++) {
+        for (var j = 0; j < aimArr[0].length; j++) {
+          if (newArr[i] === aimArr[0][j]) {
+            delete aimArr[0][j];
+          }
+        }
+      }
+      
+      return aimArr[0].filter(Boolean);
+    }
+
+    destroyer([3, 5, 1, 2, 2], 2, 3, 5);
+    </script>
+  </body>
+</html>

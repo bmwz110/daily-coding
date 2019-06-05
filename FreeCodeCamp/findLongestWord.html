@@ -1,0 +1,23 @@
+<!--找出最长的单词，返回其长度-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function findLongestWord(str) {
+        var longest = "";
+        var arr = str.split(" ");
+        for (var i = 0; i < arr.length; i++){
+          if (arr[i].length > longest.length) {
+            longest = arr[i];
+          }
+        }
+        return longest.length;
+      }
+
+      findLongestWord("The quick brown fox jumped over the lazy dog");
+    </script>
+  </body>
+</html>

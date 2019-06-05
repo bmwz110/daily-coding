@@ -1,0 +1,22 @@
+<!--根据当前时间提示问候语-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Good all the day</title>
+    </head>
+    <body>
+        <p>---This is a resume---</p>
+    </body>
+    <script>
+        var myDate = new Date();
+        nowHour = myDate.getHours();
+        if (nowHour > 4 && nowHour <= 12) {
+            alert("Good morning");
+        } else if (nowHour > 12 && nowHour <= 18) {
+            alert("Good afternoon");
+        } else  {
+            alert("Good evening");
+        }
+    </script>
+</html>

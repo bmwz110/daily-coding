@@ -1,0 +1,30 @@
+<!--
+  一个常见的案例就是ROT13密码，字母会移位13个位置。由'A' ↔ 'N', 'B' ↔ 'O'，以此类推。
+
+  写一个ROT13函数，实现输入加密字符串，输出解密字符串。
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      function rot13(str) { // LBH QVQ VG!
+        var newStr = [];
+        for (var i = 0; i < str.length; i++) {
+          if (str.charCodeAt(i) >= 78) {
+            newStr[i] = String.fromCharCode(str.charCodeAt(i) - 13);
+          } else if (str.charCodeAt(i) < 78 && str.charCodeAt(i) >= 65) {
+            newStr[i] = String.fromCharCode(str.charCodeAt(i) + 13);
+          } else {
+            newStr[i] = String.fromCharCode(str.charCodeAt(i));
+          }
+        }
+        return newStr;
+      }
+
+      rot13("SERR PBQR PNZC"); 
+    </script>
+  </body>
+</html>

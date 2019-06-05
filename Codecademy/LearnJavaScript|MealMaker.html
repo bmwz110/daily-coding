@@ -1,0 +1,48 @@
+<!--随机点菜。可以预先向菜单候选集加菜。输出所点菜品和总价。-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Meal Maker</title>
+    </head>
+    <body>
+        <script>
+            let menu = {
+                _courses: {
+                    appetizers: {
+                        "potato": 1,
+                        "tomato": 2
+                    },
+                    mains: {
+                        "rice": 3,
+                        "noodles": 4
+                    },
+                },
+                addDishToCourse: function(courseName,dishName,dishPrice) {
+                    this._courses[courseName][dishName] = dishPrice;
+                },
+                getRandomDishFromCourse: function(courseName) {
+                    let dishes = this._courses[courseName];
+                    let arr = Object.keys(dishes);
+                    let randomIndex = Math.floor(Math.random() * arr.length);
+                    //这里由于是随机选菜，所以无需考虑Object.keys值排序问题。
+                    //1. Integer indices (if applicable), in ascending order.
+                    //2. Other string keys (if applicable), in property creation order.
+                    //3. Symbol keys (if applicable), in property creation order.
+                    let name1 = Object.keys(this._courses[courseName])[randomIndex];
+                    return name1;
+                },
+                generateRandomMeal: function() {
+                    let appetizer = this.getRandomDishFromCourse("appetizers");
+                    let main = this.getRandomDishFromCourse("mains");
+                    let totalPrice = this._courses["appetizers"][appetizer] + this._courses["mains"][main];
+
+                    return `Your meal is ${appetizer}, ${main}, The price is ${totalPrice}.`;               
+                }
+            }
+            menu.addDishToCourse("appetizers", "Caesar Salad", 4.25);
+            let meal = menu.generateRandomMeal();
+            console.log(meal);
+        </script>
+    </body>
+</html>

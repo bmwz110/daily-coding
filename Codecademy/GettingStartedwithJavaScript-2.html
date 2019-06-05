@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>learnJavaScript:Conditions</title>
+    </head>
+    <body>
+       <script>
+            var raceNumber = Math.floor(Math.random() * 1000);
+            var reg = false;
+            var age = 20;
+            if (age >= 18 && reg == true) {
+                raceNumber += 1000;
+                console.log(`You'll race at 9:30, and your race number is ${raceNumber}`);
+            } else if (age >= 18 && reg == false) {
+                raceNumber += 1000;
+                console.log(`You'll race at 11:00, and your race number is ${raceNumber}`);
+            } else if (age < 18) {
+                console.log(`You'll race at 12:30, and your race number is ${raceNumber}`);
+            };
+       </script>
+    </body>
+</html>

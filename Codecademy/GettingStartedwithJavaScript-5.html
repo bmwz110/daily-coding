@@ -1,0 +1,40 @@
+<!--Write a function, finalGrade(). It should:
+
+take three arguments of type number
+find the average of those three numbers
+return the letter grade (as a string) that the average corresponds to
+return 'You have entered an invalid grade.' if any of the three grades are less than 0 or greater than 100
+0-59 should return: 'F'
+60-69 should return: 'D'
+70-79 should return: 'C'
+80-89 should return: 'B'
+90-100 should return: 'A'-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Code Challenges: Javascript Fundamentals</title>
+    </head>
+    <body>
+        <p>A</p>
+       <script>
+            finalGrade = (num1,num2,num3) => {
+                if (num1 < 0 || num2 < 0 || num3 < 0 || num1 > 100 || num2 > 100 || num3 > 100) {
+                    return "You have entered an invalid grade";
+                } else {
+                    let ave = (num1 + num2 + num3)/3;
+                    switch (true) {
+                        case (ave >= 0 && ave <= 59): return "F"; break;
+                        case (ave >= 60 && ave <= 69): return "E"; break;
+                        case (ave >= 70 && ave <= 79): return "C"; break;
+                        case (ave >= 80 && ave <= 89): return "B"; break;
+                        case (ave >= 90 && ave <= 100): return "A"; break;
+                        default: return ""; break;
+                    }
+                };
+            };
+            let res = finalGrade(93,43,60);
+            console.log(res);
+       </script>
+    </body>
+</html>
