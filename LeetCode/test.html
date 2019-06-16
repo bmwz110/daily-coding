@@ -5,6 +5,8 @@
   </head>
   <body>
     <script>
+      // cur记录当前连续的字符数，last记录字符变更之前连续的字符数
+      // 若last >= cur，例如 01、001、0001，则必有一个解
       var countBinarySubstrings = function(s) {
         s = s.split('')
         let last, cur, res
