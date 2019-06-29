@@ -5,28 +5,29 @@
   </head>
   <body>
     <script>
-      // cur记录当前连续的字符数，last记录字符变更之前连续的字符数
-      // 若last >= cur，例如 01、001、0001，则必有一个解
-      var countBinarySubstrings = function(s) {
-        s = s.split('')
-        let last, cur, res
-        last = res = 0
-        cur = 1
-        for (let i = 1; i < s.length; i++) {
-          if (s[i] === s[i-1]) {
-            cur ++
-          } else {
-            last = cur
-            cur = 1
+      arr1 = [3, 6, 9, 1]
+      var maximumGap = function(arr) {
+        let len = arr.length
+        if (len < 2) {
+          return false
+        }
+        let gap = 0
+        for (let i = len; i > 0; i--) {
+          for (let j = 0; j < i; j++) {
+            if (arr[j+1] < arr[j]) {
+              let tmp = arr[j]
+              arr[j] = arr[j+1]
+              arr[j+1] = tmp
+            }
           }
-
-          if (last >= cur) {
-            res ++
+          let curGap = Math.abs(arr[i-1] - arr[i])
+          if (curGap > gap) {
+            gap = curGap
           }
         }
-        return res
+        return gap
       };
-      countBinarySubstrings("00110")
+      console.log(maximumGap(arr1))
     </script>
   </body>
 </html>
