@@ -5,29 +5,20 @@
   </head>
   <body>
     <script>
-      arr1 = [3, 6, 9, 1]
-      var maximumGap = function(arr) {
-        let len = arr.length
-        if (len < 2) {
-          return false
-        }
-        let gap = 0
-        for (let i = len; i > 0; i--) {
-          for (let j = 0; j < i; j++) {
-            if (arr[j+1] < arr[j]) {
-              let tmp = arr[j]
-              arr[j] = arr[j+1]
-              arr[j+1] = tmp
+      var twoSum = function(nums, target) {
+        for (let i = 0; i<nums.length; i++) {
+          for (let j = i+1; j < nums.length; j++) {
+            if (target - nums[i] === nums[j]) {
+              return [i,j]
+            } else {
+              continue
             }
           }
-          let curGap = Math.abs(arr[i-1] - arr[i])
-          if (curGap > gap) {
-            gap = curGap
-          }
         }
-        return gap
       };
-      console.log(maximumGap(arr1))
+
+      nums = [2, 7, 11, 15]
+      console.log(twoSum(nums, 17))
     </script>
   </body>
 </html>
