@@ -5,5 +5,5 @@
 2. Codecademy (https://www.codecademy.com/learn)
 3. FreeCodeCamp (https://learn.freecodecamp.org/) 
 4. LeetCode（https://leetcode-cn.com/problemset/all/)
-5. Go (https://tour.go-zh.org/welcome/1)
+5. Go (https://tour.go-zh.org/welcome/)
 6. MDN (https://developer.mozilla.org/en-US/docs/Learn)
