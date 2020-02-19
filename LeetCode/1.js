@@ -12,7 +12,7 @@ let twoSum = function(nums, target) {
 
 // opt answer
 // HashMap
-var twoSum = function(nums, target) {
+let twoSum = function(nums, target) {
   let map = new Map();
   for (let i = 0; i < nums.length; i++) {
     let gapValue = target - nums[i];
