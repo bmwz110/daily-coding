@@ -92,3 +92,4 @@ function majorityEle(arr) {
 
 
 console.log(majorityEle(arr));
+
