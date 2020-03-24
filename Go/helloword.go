@@ -5,6 +5,7 @@ import "fmt"
 func variableZeroValue() {
 	var a int
 	var s string
+
 	fmt.Printf("%q %q\n", a, s)
 }
 
@@ -14,9 +15,16 @@ func variableInitialValue() {
 	fmt.Println(a, b)
 }
 
+func variableShorter() {
+	a, b := 3, "def"
+	b = "str"
+
+	fmt.Println(a, b)
+}
+
 func main() {
 	fmt.Println("Hello world")
 	variableZeroValue()
 	variableInitialValue()
+	variableShorter()
 }
-
