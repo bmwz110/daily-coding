@@ -2,13 +2,21 @@ package main
 
 import "fmt"
 
-func variable() {
+func variableZeroValue() {
 	var a int
 	var s string
-	fmt.Println(a, s)
+	fmt.Printf("%q %q\n", a, s)
+}
+
+func variableInitialValue() {
+	var a, b = 3, "abc"
+
+	fmt.Println(a, b)
 }
 
 func main() {
 	fmt.Println("Hello world")
-	variable()
+	variableZeroValue()
+	variableInitialValue()
 }
+
