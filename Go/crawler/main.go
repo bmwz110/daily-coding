@@ -37,6 +37,7 @@ func main() {
 	fmt.Printf("%s\n", all)
 }
 
+// check content charset
 func determinEncoding(r io.Reader) encoding.Encoding {
 	bytes, err := bufio.NewReader(r).Peek(1024)
 	if err != nil {
