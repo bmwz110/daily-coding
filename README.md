@@ -1,6 +1,6 @@
 ### 对一些在线代码测试的回答
 
-##### 目前主要包括以下几个网站：
+##### Mainly including some website below：
 1. Golang
 2. Codecademy (https://www.codecademy.com/learn)
 3. FreeCodeCamp (https://learn.freecodecamp.org/) 
