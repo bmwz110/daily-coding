@@ -16,7 +16,7 @@ func (node treeNode) setValue(value int) {
 		fmt.Println("Setting value to nil node, Ignored.")
 		return
 	}
-
+ 
 	node.value = value
 }
 
