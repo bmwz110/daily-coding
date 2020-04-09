@@ -12,6 +12,6 @@ func main()
 		fmt.Println(err)
 	} else {
 		fmt.Printf("%s\n", contents)
-	}
+	} 
 }
  
