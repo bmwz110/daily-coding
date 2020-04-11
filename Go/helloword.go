@@ -6,7 +6,7 @@ func variableZeroValue() {
 	var a int
 	var s string
 
-	fmt.Printf("%q %q\n", a, s)
+	fmt.Printf("%q %q\n", a, s) 
 }
 
 func variableInitialValue() {
