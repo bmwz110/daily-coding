@@ -5,7 +5,7 @@ import "fmt"
 type treeNode struct {
 	value       int
 	left, right *treeNode
-}
+} 
 
 func (node treeNode) print() {
 	fmt.Println(node.value)
