@@ -30,7 +30,7 @@ func main() {
 		res.Body, e.NewDecoder())
 
 	all, err := ioutil.ReadAll(utf8Reader)
-	if err != nil {
+	if err != nil { 
 		panic(err)
 	}
  
