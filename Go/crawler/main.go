@@ -17,7 +17,7 @@ func main() {
  
 	if err != nil {
 		panic(err)
-	} 
+	}
 	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
