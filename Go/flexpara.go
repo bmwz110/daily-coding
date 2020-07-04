@@ -7,10 +7,11 @@ func sum(numbers ...int) int {
 	for i := range numbers {
 		s += numbers[i]
 	}
-
+ 
 	return s
 }
 
 func main() {
 	fmt.Println(sum(1, 2, 3, 4))
 }
+ 
