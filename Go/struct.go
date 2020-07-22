@@ -54,4 +54,4 @@ func main() {
 	root.right.left.print() // 0, if setValue is (node *treeNode), this value will be 4
 	fmt.Println(root)
 	root.traverse()
-}
+} 
