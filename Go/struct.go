@@ -27,7 +27,7 @@ func (node *treeNode) traverse() {
 	node.left.traverse()
 	node.print()
 	node.right.traverse()
-}
+} 
 
 // factory func
 func createNode(value int) *treeNode {
@@ -55,3 +55,4 @@ func main() {
 	fmt.Println(root)
 	root.traverse()
 } 
+
