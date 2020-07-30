@@ -1,3 +1,5 @@
+https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/
+
 // Solution 1
 func missingNumber(nums []int) int {
 	left := 0
