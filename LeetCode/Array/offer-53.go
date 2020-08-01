@@ -19,21 +19,16 @@ func missingNumber(nums []int) int {
 
 // Solution 2
 func missingNumber(nums []int) int {
-    n:=len(nums)
-    count:=(n+n*n) >> 1
-    for _,v:=range nums{
-        count-=v
-    }
-    return count
+	sum := 0
+	for _, num := range nums {
+		sum += num
+	}
+
+	// 不缺失情况下的和 total 减去 缺失情况下的和 sum，即为缺失值
+	total := (1 + nums[len(nums)-1]) * nums[len(nums)-1] / 2
+
+	return total - sum
 }
 
 
 
-// Solution 3
-func missingNumber(nums []int) int {
-    var count=len(nums)
-    for i,v:=range nums{
-        count^=i^v
-    }
-    return count
-}
