@@ -27,4 +27,5 @@ loop:
 		wholeLength += len(v1)
 	}
 	return wholeLength
-}
+} 
+ 
