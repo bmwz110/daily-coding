@@ -23,3 +23,4 @@ func findLengthOfLCIS(nums []int) int {
 	}
 	return ans
 }
+
