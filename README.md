@@ -1,4 +1,4 @@
-##### Mainly including some website below：
+##### Mainly including some websites below：
 * Leetcode (https://leetcode-cn.com)
 * Codecademy (https://www.codecademy.com/learn)
 * FreeCodeCamp (https://learn.freecodecamp.org/) 
