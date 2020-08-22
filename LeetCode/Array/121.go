@@ -22,7 +22,7 @@ func maxProfit(nums []int) int {
 	}
 
 	return bonus
-}
+} 
 
 func Min(x, y int) int {
 	if x < y {
