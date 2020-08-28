@@ -26,4 +26,4 @@ func findDisappearedNumbers(nums []int) []int {
 
 	return arr2[1:]
 }
- 
+
