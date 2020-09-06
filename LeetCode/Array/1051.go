@@ -1,6 +1,6 @@
 // 对数组进行排序，并返回与原数组的不同项个数
 
-package main
+package main  
 
 import "fmt"
 
@@ -27,5 +27,5 @@ func heightChecker(heights []int) int {
 	}
 
 	return count
-}
+} 
  
