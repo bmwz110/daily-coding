@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 )
-
+ 
 func main() {
 	heights := []int{2, 2, 1, 1, 1, 2, 2}
 	fmt.Println(majorityElement(heights))
