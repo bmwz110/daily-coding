@@ -12,5 +12,5 @@ func removeDuplicates(nums []int) int {
 		}
 		q++
 	}
-	return p + 1
+	return p + 1 
 }
