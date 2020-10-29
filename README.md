@@ -4,4 +4,3 @@
 * FreeCodeCamp (https://learn.freecodecamp.org/) 
 * BaiduCollege (http://ife.baidu.com/course/all)
 * MDN (https://developer.mozilla.org/en-US/docs/Learn)
- 
