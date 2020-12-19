@@ -2,7 +2,7 @@ package main
 
 import (
 	"context" 
-	"fmt" 
+	"fmt"
 	"time"
 )
 
@@ -35,7 +35,7 @@ func watch(ctx context.Context, name string) {
 
 // 现在准备开始等待 8 秒, time= 1605082007 
 // 监控-2 goroutine监控中，time= 1605082007 
-// 监控-1 goroutine监控中，time= 1605082007 
+// 监控-1 goroutine监控中，time= 1605082007
 // 监控-1 goroutine监控中，time= 1605082008 
 // 监控-2 goroutine监控中，time= 1605082008 
 // 监控-2 goroutine监控中，time= 1605082009
