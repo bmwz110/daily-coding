@@ -28,4 +28,3 @@ func heightChecker(heights []int) int {
 
 	return count;
 } 
-
