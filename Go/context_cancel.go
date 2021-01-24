@@ -43,4 +43,3 @@ func watch(ctx context.Context, name string) {
 // 监控-2 收到结束信号，退出监控，time= 1605082010
 // 监控-1 收到结束信号，退出监控，time= 1605082010
 // 已运行 8 秒，准备调用下一行的 cancel() 函数，发现 2 个子协程已经结束，time= 1605082015
-
