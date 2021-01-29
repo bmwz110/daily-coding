@@ -9,7 +9,7 @@ print(r1)
 # abc+同上，只是c可以有1次或者不限多次
 r2 = re.findall('abc+', s)
 print(r2)
-
+ 
 # abc？同上，只是c可以有0次或者1次
 r3 = re.findall('abc?', s)
 print(r3)
