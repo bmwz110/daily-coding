@@ -6,7 +6,7 @@ import "fmt"
 
 func main() {
 	heights := []int{5, 1, 2, 3, 4}
-	fmt.Println(heightChecker(heights))
+	fmt.Println(heightChecker(heights)) 
 }
 
 func heightChecker(heights []int) int {
