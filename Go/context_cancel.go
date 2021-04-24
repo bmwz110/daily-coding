@@ -14,7 +14,7 @@ func main() {
 	go watch(ctx, "监控-2")
 
 	fmt.Println("现在准备开始等待 8 秒, time=", time.Now().Unix())
-	time.Sleep(time.Second * 8)
+	time.Sleep(time.Second * 8) 
 
 	fmt.Println("已运行 8 秒，准备调用下一行的 cancel() 函数，发现 2 个子协程已经结束，time=", time.Now().Unix())
 	cancel()
