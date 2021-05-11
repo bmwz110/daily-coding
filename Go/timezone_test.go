@@ -13,7 +13,7 @@ func String2Int64(str string) int64 {
 		return int64(0) 
 	}
 
-	return iValue
+	return iValue 
 }
 
 func main() {
