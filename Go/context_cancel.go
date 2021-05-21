@@ -20,7 +20,7 @@ func main() {
 	cancel()
 }
 
-func watch(ctx context.Context, name string) {
+func watch(ctx context.Context, name string) { 
 	for {
 		select {
 		case <-ctx.Done():
