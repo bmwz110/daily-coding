@@ -9,4 +9,3 @@ handle['/upload'] = requestHandlers.upload;
 handle['/favicon.ico'] = requestHandlers.favicon;
 
 server.start(router.route, handle);
- 
