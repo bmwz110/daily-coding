@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-)
+) 
 
 func main() {
 	nums := []int{17, 18, 5, 4, 6, 1}
