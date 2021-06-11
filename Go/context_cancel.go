@@ -28,7 +28,7 @@ func watch(ctx context.Context, name string) {
 			return
 		default:
 			fmt.Println(name, "goroutine监控中，time=", time.Now().Unix())
-			time.Sleep(time.Second * 1) 
+			time.Sleep(time.Second * 1)  
 		}
 	}
 }
