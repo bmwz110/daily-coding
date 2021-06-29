@@ -14,7 +14,7 @@ func heightChecker(heights []int) int {
 	for _, height := range heights { 
 		arr[height]++ 
 	} 
-
+ 
 	count := 0
 	for i, j := 1, 0; i < len(arr); i++ {
 		for arr[i] > 0 {
