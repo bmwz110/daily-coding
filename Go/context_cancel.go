@@ -25,7 +25,7 @@ func watch(ctx context.Context, name string) {
 		select {
 		case <-ctx.Done():
 			fmt.Println(name, "收到结束信号，退出监控，time=", time.Now().Unix())
-			return
+			return 
 		default:
 			fmt.Println(name, "goroutine监控中，time=", time.Now().Unix())
 			time.Sleep(time.Second * 1)  
