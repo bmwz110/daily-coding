@@ -25,4 +25,3 @@ func main() {
 
 	log.Info(converted_tm.Day())   // 28
 }
- 
