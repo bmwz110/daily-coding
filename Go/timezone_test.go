@@ -14,7 +14,7 @@ func String2Int64(str string) int64 {
 	}
 
 	return iValue 
-}
+} 
 
 func main() {
 
